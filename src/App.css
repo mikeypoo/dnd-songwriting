@@ -17,11 +17,11 @@ body {
 }
 
 .App-img {
-  width: 100%;
+  height: 120px;
 }
 
 .App-bigText {
-  font-size: 48px;
+  font-size: 24px;
   font-weight: 800;
   text-align: center;
   padding-top: 16px;

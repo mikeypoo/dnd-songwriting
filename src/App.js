@@ -117,8 +117,10 @@ function App() {
   if (!showResultsPage) {
     return (
       <div className="App">
+        <div style={{ marginBottom: '16px', fontSize: '12px' }}>@superfamousmike presents</div>
         <img alt="Dungeons and Dragons Songwriting" className="App-img" src="/dnd_songwriting_header.png" />
         <div className="App-bigText">The D&D Songwriting Game</div>
+        <div style={{ marginTop: '8px'}}>by Lake Street Dive</div>
         <div className="App-footer" onClick={maybeShowResults}>
           <div className="App-footer-progress" style={{ width: styleWidth }} />
           {!hasRolledForTempo && (

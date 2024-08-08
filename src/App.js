@@ -150,7 +150,7 @@ function App() {
         )}
         {!hasRolledForChords && (
           <div className="App-die-rolling">
-            <img alt="Rolling die" src="/favicon.ico" className={showDieRolling ? 'spinning' : ''}/>
+            <img alt="Rolling die" src="/dnd_songwriting_die.png" className={showDieRolling ? 'spinning' : ''}/>
             {!showDieRolling && (
               <div> </div>
             )}

@@ -99,6 +99,9 @@ function App() {
   const maybeShowResults = () => {
     if (theTempo !== null && theTimeSig !== null && theChords !== null) {
       setShowResultsPage(true)
+      setTimeout(() => {
+        document.getElementById('results').scrollTop = 0
+      }, 100)
     }
   }
 
@@ -165,7 +168,7 @@ function App() {
     )
   } else {
     return (
-        <div className="App-resultsPage">
+        <div className="App-resultsPage" id="results">
             <div className="App-bigText" style={{ marginBottom: '16px'}}>
               Results!
             </div>
@@ -199,9 +202,9 @@ function App() {
             <div className="App-resultSection">
               <div className="App-resultHeader">Chords</div>
               <div className="chord-container">
-                {theChords.map(chord => {
+                {theChords.map((chord, idx) => {
                   return (
-                    <div className="single-chord">{chord}</div>
+                    <div key={idx} className="single-chord">{chord}</div>
                   )
                 })}
               </div>

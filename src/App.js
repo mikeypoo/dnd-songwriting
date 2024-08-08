@@ -117,7 +117,7 @@ function App() {
   if (!showResultsPage) {
     return (
       <div className="App">
-        <img className="App-img" src="/dnd_songwriting_header.png" />
+        <img alt="Dungeons and Dragons Songwriting" className="App-img" src="/dnd_songwriting_header.png" />
         <div className="App-bigText">The D&D Songwriting Game</div>
         <div className="App-footer" onClick={maybeShowResults}>
           <div className="App-footer-progress" style={{ width: styleWidth }} />
@@ -145,7 +145,7 @@ function App() {
         )}
         {!hasRolledForChords && (
           <div className="App-die-rolling">
-            <img src="/favicon.ico" className={showDieRolling ? 'spinning' : ''}/>
+            <img alt="Rolling die" src="/favicon.ico" className={showDieRolling ? 'spinning' : ''}/>
             {!showDieRolling && (
               <div> </div>
             )}

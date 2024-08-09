@@ -1,3 +1,8 @@
+#root {
+  display: flex;
+  justify-content: center;
+}
+
 body {
   font-family: "Dosis", sans-serif;
 }
@@ -10,14 +15,14 @@ body {
   flex-direction: column;
   align-items: center;
   padding-top: 16px;
-  max-width: 480px;
+  width: 100%;
   margin: auto;
-  padding: 16px;
   padding-bottom: 80px;
+  position: fixed;
 }
 
 .App-img {
-  height: 120px;
+  height: 160px;
 }
 
 .App-bigText {
@@ -102,10 +107,8 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  height: 150px;
-  width: 150px;
-  position: absolute;
-  bottom: 35px;
+  height: 200px;
+  width: 200px;
 }
 
 .App-die-rolling img {
@@ -126,10 +129,10 @@ body {
 }
 
 .App-resultsPage {
-  height: 100vh;
+  height: 100dvh;
   width: 100%;
   background:rgb(234, 51, 179);
-  position: absolute;
+  position: fixed;
   top: 0;
   animation: slideIn 300ms linear forwards;
   display: flex;
@@ -231,7 +234,7 @@ body {
   rotate: 90deg;
   animation: bounce 1s linear infinite;
   position: absolute;
-  bottom: 100px
+  bottom: 200px
 }
 
 @keyframes bounce {
@@ -261,6 +264,7 @@ body {
   font-weight: 800;
   margin-top: 24px;
   text-align: center;
+  margin-bottom: 16px;
 }
 
 .chord-container {
@@ -276,4 +280,7 @@ body {
   text-align: center;
   font-weight: bold;
   font-size: 24px;
+}
+.timesig {
+  color:rgb(234, 51, 179);
 }

@@ -41,17 +41,24 @@ function App() {
 
   const [showResultsPage, setShowResultsPage] = useState(false)
 
-  const [sliders, setSliders] = useState([1, 0, 0, 0]);
+  const [sliders, setSliders] = useState([0, 0, 0, 0]);
   const totalSliderSum = sliders.reduce((sum, value) => sum + value, 0);
 
   const handleSliderChange = (index, event) => {
     const newValue = Number(event.target.value);
     const newSliders = [...sliders];
     newSliders[index] = newValue;
-    setSliders(newSliders);
+
+    const newSum = newSliders.reduce((s1, s2) => s1 + s2, 0)
+
+    if (newSum <= theTimeSig) {
+      setSliders(newSliders);
+    }
   };
 
   const areSlidersValid = totalSliderSum === theTimeSig;
+
+  const beatsRemaining = theTimeSig !== null ? theTimeSig - sliders.reduce((s1, s2) => s1 + s2, 0) : 0;
 
   const rollForTempo = () => {
     rollDie()
@@ -114,7 +121,7 @@ function App() {
     setHasRolledForChords(false)
     setTheChords(null)
     setShowResultsPage(false)
-    setSliders([1, 0, 0, 0])
+    setSliders([0, 0, 0, 0])
   }
 
   if (!showResultsPage) {
@@ -174,11 +181,17 @@ function App() {
             </div>
             <div className="App-resultSection">
               <div className="App-resultHeader">Tempo</div>
-              <div className="App-resultValue">{`${theTempo}bpm`}</div>
+              <div className="App-resultValue" style={{ fontSize: '24px'}}>{`${theTempo}bpm`}</div>
             </div>
             <div className="App-resultSection">
               <div className="App-resultHeader">Time Signature</div>
-              <div className="App-resultValue">{`${theTimeSig} beats`}</div>
+              <div className={`validation-message ${areSlidersValid ? 'valid' : 'invalid'}`}>
+                {areSlidersValid ? (
+                  <span>🤘 You're ready to rock! 🤘</span>
+                ) : (
+                  <span>You have <span className="timesig">{beatsRemaining}</span> beats left to distribute</span>
+                )}
+              </div>
               {sliders.map((value, index) => (
                 <div key={index} className="App-beat">
                   <div className="App-beat-label">Bar {index + 1}</div>
@@ -195,9 +208,6 @@ function App() {
                   </div>
                 </div>
               ))}
-              <div className={`validation-message ${areSlidersValid ? 'valid' : 'invalid'}`}>
-                {areSlidersValid ? "You're ready to rock!" : `You've gotta use up exactly ${theTimeSig} beats!`}
-              </div>
             </div>
             <div className="App-resultSection">
               <div className="App-resultHeader">Chords</div>
